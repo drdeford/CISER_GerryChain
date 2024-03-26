@@ -20,7 +20,7 @@ The main material we will be discussing in the tutorial is contained in the four
 * **2\_Compactness.ipynb** In this notebook we will examine continuous and discrete geographic measures on districting plans. 
 * **3\_Partisan\_Symmetry.ipynb** In this notebook we use the Partition object from the GerryChain package to analyze the partisan symmetry of redistricting plans. 
 * **4\_Ensembles.ipynb** In this final notebook we will put everything together, using tree-based MCMC methods to generate ensembles of redistricting plans.
-* 
+
 
 ## Data Source
 
