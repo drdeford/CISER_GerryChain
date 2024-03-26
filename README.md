@@ -1,4 +1,4 @@
-# CISER_GerryChain
+# CISER GerryChain Workshop
 
 Home for the materials (notebooks, data, and commentary) associated to the WSU CISER Workshop on Computational Redistricting. This tutorial is intended to provide a starting point for working with graphs and networks in Python and doesn't assume any specific programming background. The intended outline is approximately: 
 
