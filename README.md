@@ -29,6 +29,8 @@ The main material we will be discussing in the tutorial is contained in the four
 <img src="https://github.com/drdeford/CISER_GerryChain/blob/main/Animations/WA4.gif" width=300>
         </td><td>
 <img src="https://github.com/drdeford/CISER_GerryChain/blob/main/Animations/forest_lifted_walk.gif" width=300>
+    </td><td>
+<img src="https://github.com/drdeford/CISER_GerryChain/blob/main/Animations/NH_Two_Edge_Steps.gif" width=300>
     </td></tr>
     <tr><td>
 <img src="https://github.com/drdeford/CISER_GerryChain/blob/main/Animations/lifted_gif.gif" width=300>
@@ -36,6 +38,9 @@ The main material we will be discussing in the tutorial is contained in the four
 <img src="https://github.com/drdeford/CISER_GerryChain/blob/main/Animations/new_wa_gif.gif" width=300>
     </td><td>
 <img src="https://github.com/drdeford/CISER_GerryChain/blob/main/Animations/space10.gif" width=300>
+
+</td><td>
+<img src="https://github.com/drdeford/CISER_GerryChain/blob/main/Animations/ID_plans_sld.gif" width=300>
 
 </td></tr>
 </table>
