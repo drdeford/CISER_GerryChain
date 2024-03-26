@@ -412,4 +412,82 @@ def moment_of_inertia(geo, geo_cell = None, wt = 1):
 
         return _mass_moment_of_inertia(geo, geo_cell, wt)
     
+#Functions from David Rice WSU STATS/CISER
+
+
+
+
+def district_hull_vis(district_num, district_color, district_col_name,  df):
+    #################################
+    #district_num: Integer representing district number
+    #district_color: String representing the fill color of the district in the circle
+    #district_edge_color: String representing color of district edge
+    #district_col_name: The name of the column of which the district is containted
+    #df: the dataframe
+    
+    #will print images of bounding convex hull corresponding to district_num and "liquified" district within hull
+    #returns numeric ratio of district area over convex hull area
+    df_indexed = df[df[district_col_name]== district_num]
+       
+    #Plotting the convex hull 
+    my_district = df_indexed.dissolve(by = district_col_name)
+    #Obtaining boundry points
+    fig, ax = plt.subplots()
+    my_district["geometry"].convex_hull.boundary.plot(ax = ax, color = "black")
+    df_indexed.plot(ax = ax, color = district_color, edgecolor = "black")
+    plt.show()
+
+    ##############################################
+    #Filling the convex hull
+    ###########################################
+
+    my_boundary = my_district["geometry"].convex_hull.boundary
+    my_boundary = my_boundary.to_crs(crs = 4326)
+
+    district_area = (my_district["geometry"].area)
+    print(my_boundary.bounds)
+    miny = float(my_boundary.bounds["miny"].iloc[0])
+    maxy = float(my_boundary.bounds["maxy"].iloc[0])
+    my_nums = np.arange(miny+0.01, maxy-0.01, 0.01)
+    area_lists = []
+
+    
+    
+
+
+    #Iteratively getting areas of convex hulls for different height cutoffs
+    for i in my_nums:
+        pointlist = []
+        height = i
+        for i in my_boundary[district_num].coords:
+            if(i[1]< height):
+                pointlist.append(i)
+        points = ([Point(coords) for coords in pointlist])
+        geo_series = gpd.GeoSeries(points)
+        convex_hull_polygon = gpd.GeoDataFrame(geometry=[geo_series.unary_union.convex_hull])
+        area_lists.append(float(convex_hull_polygon.area.iloc[0]))
+
+    area_lists = np.array(area_lists)
+    #Solving for best height
+    height = my_nums[abs(area_lists - float(district_area.iloc[0])) == min(abs(area_lists-float(district_area.iloc[0])))].min()
+    pointlist = []
+    for i in my_boundary[district_num].coords:
+        if(i[1]< height):
+            pointlist.append(i)
+    points = ([Point(coords) for coords in pointlist])
+    geo_series = gpd.GeoSeries(points)
+    convex_hull_polygon = gpd.GeoDataFrame(geometry=[geo_series.unary_union.convex_hull])
+    
         
+    
+    fig, ax = plt.subplots()
+
+
+    my_district["geometry"].convex_hull.boundary.plot(ax = ax, color = "black")
+    convex_hull_polygon.plot(ax=ax, color=district_color, linewidth=2, label='Convex Hull')
+    plt.show()
+
+
+
+    hull_area = my_district["geometry"].convex_hull.area.iloc[0]
+    return(district_area/hull_area)
