@@ -1,8 +1,8 @@
 # CISER GerryChain Workshop
 
-Home for the materials (notebooks, data, and commentary) associated to the WSU CISER Workshop on Computational Redistricting. This tutorial is intended to provide a starting point for working with graphs and networks in Python and doesn't assume any specific programming background. The intended outline is approximately: 
+Home for the materials (notebooks, data, and commentary) associated to the Spring 2024 WSU CISER Workshop on Computational Redistricting. This tutorial is intended to provide a starting point for exploring computational redistricting in Python and doesn't assume any specific programming background. The intended outline is approximately: 
 
-* How do Jupyter notebooks work?
+* How do Jupyter notebooks work in Python?
 * Data Processing for Redistricting
 * Metrics on Redistricting Plans
 * The MCMC Ensemble Method
@@ -47,14 +47,13 @@ The main material we will be discussing in the tutorial is contained in the four
 
 ## Other Resources
 
-A couple of hours isn't nearly enough time to explore all of the facets of networkx, so here are some good starting places if you are interested in learning more: 
-
-* The NetworkX documentation is always a good starting spot and contains numerous examples in addition to the descriptions of functions and parameters: https://networkx.org/documentation/stable/index.html
-* I taught a graduate class on Computational Tools for Complex Networks at WSU last semester and the course repository (with additional notebooks and exposition documents) can be found here: https://github.com/drdeford/Math_581_05 The notebooks don't have as much expository material as the ones for this tutorial session but do include more detailed computations.
-* As a part of the 2019 Voting Rights Data Institute, I taught a week of breakout sessions about networks with materials here: https://github.com/vrdi/Networks-Breakout
+A couple of hours isn't nearly enough time to explore all of the facets of computational redistricting, so here are some good starting places if you are interested in learning more: 
 * If you are interested in trying out the GerryChain package for analyzing districting plans, you can find:
   * General information and background: htps://tinyurl.com/gerrytalk
   * Mathematical background (some typos!): http://math.wsu.edu/faculty/ddeford/mcmc_intro.php
   * Templates and notebooks here: https://github.com/drdeford/GerryChain-Templates 
   * A bootcamp-style introduction here: https://github.com/vrdi/GerryChain-BootCamp
+* The NetworkX documentation is always a good starting spot and contains numerous examples in addition to the descriptions of functions and parameters: https://networkx.org/documentation/stable/index.html
+* I taught a graduate class on Computational Tools for Complex Networks at WSU last semester and the course repository (with additional notebooks and exposition documents) can be found here: https://github.com/drdeford/Math_581_05 The notebooks don't have as much expository material as the ones for this tutorial session but do include more detailed computations.
+* As a part of the 2019 Voting Rights Data Institute, I taught a week of breakout sessions about networks with materials here: https://github.com/vrdi/Networks-Breakout
 
