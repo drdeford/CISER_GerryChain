@@ -19,7 +19,14 @@ The main material we will be discussing in the tutorial is contained in the four
 * **1\_Dual\_Graphs\_and\_MAUP.ipynb** This notebook explores the basic properties of dual graphs (using the networkx package) for representing geospatial data (using geopandas) for redistricting.  We will also use the MAUP package to move demographic and partisan data between different levels of resolution and assign census units to plans. 
 * **2\_Compactness.ipynb** In this notebook we will examine continuous and discrete geographic measures on districting plans. 
 * **3\_Partisan\_Symmetry.ipynb** In this notebook we use the Partition object from the GerryChain package to analyze the partisan symmetry of redistricting plans. 
-* **4\_Ensembles.ipynb** In this final notebook we will put everything together, using tree-based MCMC methods to generate ensembles of redistricting plans. 
+* **4\_Ensembles.ipynb** In this final notebook we will put everything together, using tree-based MCMC methods to generate ensembles of redistricting plans.
+* 
+
+## Data Source
+
+The underlying shapefiles were downloaded from the Redistricting Data Hub (redistrictingdatahub.org). Please read the terms and conditions for working with their data here: https://redistrictingdatahub.org/terms-and-conditions/ 
+
+## Fun Animations
 
 
 <table>
