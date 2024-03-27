@@ -1,6 +1,6 @@
 # CISER GerryChain Workshop
 
-Home for the materials (notebooks, data, <a href="https://math.wsu.edu/faculty/ddeford/CISER_Gerry_Slides.pdf">slides<a>, and commentary) associated to the Spring 2024 WSU CISER Workshop on Computational Redistricting. This tutorial is intended to provide a starting point for exploring computational redistricting in Python and doesn't assume any specific programming background. The intended outline is approximately: 
+Home for the materials (notebooks, data, <a href="https://www.math.wsu.edu/faculty/ddeford/CISER_Gerry_Slides.pdf">slides<a>, and commentary) associated to the Spring 2024 WSU CISER Workshop on Computational Redistricting. This tutorial is intended to provide a starting point for exploring computational redistricting in Python and doesn't assume any specific programming background. The intended outline is approximately: 
 
 * How do Jupyter notebooks work in Python?
 * Data Processing for Redistricting
