@@ -419,6 +419,127 @@ def moment_of_inertia(geo, geo_cell = None, wt = 1):
     
 #Functions from David Rice WSU STATS/CISER
 
+from matplotlib.collections import PatchCollection
+import geopandas as gpd
+from shapely.geometry import Point
+from scipy.spatial import ConvexHull
+import matplotlib.pyplot as plt
+def district_reock_vis(district_num, district_color, district_edge_color, district_col_name,circle_color, pie_color,pie_edge_color, df):
+    #################################
+    #district_num: Integer representing district number
+    #district_color: String representing the fill color of the district in the circle
+    #district_edge_color: String representing color of district edge
+    #district_col_name: The name of the column of which the district is containted
+    #circle_color: Color of the bounding circle drawn
+    #pie_color: Color of pie chart fill
+    #pie_edge_color: Color of pie chart border
+    #df: the dataframe
+    
+    #will print images of bounding circle of the district corresponding to district_num and "liquified" district within circle
+    #returns numeric reock score corresonding to district_num
+    ##################################
+    
+    #1 isolating district and plotting:
+    
+    
+    
+    #Obtaining dataframe of interest
+    df_indexed = df[df[district_col_name] == district_num]
+    
+    
+    #Obtaining boundry points
+    edges = list(df_indexed.dissolve(by = district_col_name).exterior)
+    coord_list= []
+    for i in range(len(edges[0].coords)):
+        x = edges[0].coords[i][0]
+        y = edges[0].coords[i][1]
+        coord_list = coord_list + [(x,y)]
+
+    #Using circle function given before 
+    center_radius = make_circle(coord_list)
+    district_center = Point((center_radius[0],center_radius[1]))
+    
+    
+    #Obtaining hollow circle 
+    circle = district_center.buffer(center_radius[2])
+    gdf_circle = gpd.GeoDataFrame(geometry=[circle])
+    hole_radius_degrees = center_radius[2] - center_radius[2]*(1/50)
+    hole = district_center.buffer(hole_radius_degrees)
+    result = gdf_circle.difference(hole)
+
+
+    
+    #Plotting the circle
+    fig, ax = plt.subplots()
+    # Plot the district boundary
+    df_indexed.plot(ax=ax, color=district_color, edgecolor=district_edge_color)
+    # Plot the circle
+    #gpd.GeoSeries(circle).plot(ax=ax, color='white', alpha=0.5,edgecolor = "red")
+    #gpd.GeoSeries(inner_circle).plot(ax = ax, color = "white", alpha = 1, edgecolor = "blue")
+    result.plot(ax=ax, color=circle_color, alpha=1)
+    plt.show()
+    
+    
+    #Getting Reock and plotting
+    #Getting reock score
+    circle_area_df = gpd.GeoDataFrame(geometry=[circle], crs='EPSG:4326')
+    circle_area = (circle_area_df['geometry'].area.iloc[0])
+    district_area = (df_indexed.dissolve(by = district_col_name).area.iloc[0])
+    reock_score = (district_area/circle_area)
+
+    #Plotting circle
+    #######################################################
+    
+
+    miny = float(gdf_circle.bounds["miny"][0])
+    maxy = float(gdf_circle.bounds["maxy"][0])
+    my_nums = np.arange(miny+0.01, maxy-0.01, 0.01)
+    area_lists = []
+
+    for i in my_nums:
+        pointlist = []
+        for j in gdf_circle["geometry"].boundary[0].coords:
+            if(j[1]< i):
+                pointlist.append(j)
+        points = ([Point(coords) for coords in pointlist])
+        geo_series = gpd.GeoSeries(points)
+        convex_hull_polygon = gpd.GeoDataFrame(geometry=[geo_series.unary_union.convex_hull])
+        area_lists.append(float(convex_hull_polygon.area.iloc[0]))
+
+    area_lists = np.array(area_lists)
+    #Solving for best height
+    height = my_nums[abs(area_lists - float(district_area)) == min(abs(area_lists-float(district_area)))].min()
+    pointlist = []
+    for i in gdf_circle["geometry"].boundary[0].coords:
+        if(i[1]< height):
+                pointlist.append(i)
+    points = ([Point(coords) for coords in pointlist])
+    geo_series = gpd.GeoSeries(points)
+    convex_hull_polygon = gpd.GeoDataFrame(geometry=[geo_series.unary_union.convex_hull])
+    
+    
+    
+    ######################################################
+    
+    
+    
+    #Plotting the circle
+    fig, ax = plt.subplots()
+    # Plot the district boundary
+    convex_hull_polygon.plot(ax=ax, color=pie_color, linewidth=2, label='Convex Hull')
+
+    result.plot(ax=ax, color=circle_color, alpha=1)
+
+    plt.show()
+    
+    
+    
+
+    return(reock_score)
+    
+    
+#Functions from David Rice WSU STATS/CISER
+
 
 
 
@@ -496,3 +617,6 @@ def district_hull_vis(district_num, district_color, district_col_name,  df):
 
     hull_area = my_district["geometry"].convex_hull.area.iloc[0]
     return(district_area/hull_area)
+
+    
+    
