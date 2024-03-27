@@ -55,6 +55,7 @@ The underlying shapefiles were downloaded from the Redistricting Data Hub (redis
 ## Other Resources
 
 A couple of hours isn't nearly enough time to explore all of the facets of computational redistricting, so here are some good starting places if you are interested in learning more: 
+* Colorado College Math Professor Beth Malmskog and I put together some teaching and learning materials with activities for computational redistricting for the AMS Engaged Pedagogy series here: https://www.math.wsu.edu/faculty/ddeford/AMS_EP.php 
 * If you are interested in trying out the GerryChain package for analyzing districting plans, you can find:
   * General information and background: htps://tinyurl.com/gerrytalk
   * Mathematical background (some typos!): http://math.wsu.edu/faculty/ddeford/mcmc_intro.php
